@@ -178,7 +178,7 @@ describe('Overlay directives', () => {
 
   it('should not close when pressing escape with closeOnEscape disabled', () => {
     fixture.componentInstance.isOpen = true;
-    fixture.componentInstance.closeOnEscape = false;
+    fixture.componentInstance.disableClose = true;
     fixture.detectChanges();
 
     const event = dispatchKeyboardEvent(document.body, 'keydown', ESCAPE);
@@ -675,7 +675,7 @@ describe('Overlay directives', () => {
             [cdkConnectedOverlayGrowAfterOpen]="growAfterOpen"
             [cdkConnectedOverlayPush]="push"
             [cdkConnectedOverlayScrollStrategy]="scrollStrategy"
-            [cdkConnectedOverlayCloseOnEscape]="closeOnEscape"
+            [cdkConnectedOverlayDisableClose]="disableClose"
             cdkConnectedOverlayBackdropClass="mat-test-class"
             cdkConnectedOverlayPanelClass="cdk-test-panel-class"
             (backdropClick)="backdropClickHandler($event)"
@@ -707,7 +707,7 @@ class ConnectedOverlayDirectiveTest {
   offsetY: number;
   triggerOverride: CdkOverlayOrigin;
   hasBackdrop: boolean;
-  closeOnEscape: boolean = true;
+  disableClose: boolean;
   viewportMargin: number;
   flexibleDimensions: boolean;
   growAfterOpen: boolean;
